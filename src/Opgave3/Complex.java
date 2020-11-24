@@ -3,12 +3,13 @@ package Opgave3;
 public class Complex {
     private double re;
     private double im;
+    private int iterationValue;
 
     public double getRe() {
-        return re;
+        return this.re;
     }
     public double getIm() {
-        return im;
+        return this.im;
     }
 
     public double abs() {
@@ -29,18 +30,25 @@ public class Complex {
         return "" + this.getRe() + " + " + this.getIm() + "i";
     }
 
+    public void setIterationValue(int _val) {
+        this.iterationValue = _val;
+    }
+    public int getIterationValue() {
+        return this.iterationValue;
+    }
+
     public Complex() {
-        re = 0;
-        im = 0;
+        this.re = 0;
+        this.im = 0;
     }
 
     public Complex(double _re, double _im) {
-        re = _re;
-        im = _im;
+        this.re = _re;
+        this.im = _im;
     }
 
     public Complex(Complex z) {
-        re = z.getRe();
-        im = z.getIm();
+        this.re = z.getRe();
+        this.im = z.getIm();
     }
 }

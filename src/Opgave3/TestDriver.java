@@ -1,5 +1,7 @@
 package Opgave3;
 
+import java.awt.*;
+
 public class TestDriver {
     static Mandelbrot mb = new Mandelbrot();
     public static void main(String args[]) {
@@ -16,7 +18,7 @@ public class TestDriver {
         // System.out.println("product = " + product);
 
 //        double[] doubles = mb.promptDoubles("Enter 3 numbers: ");
-        double[] doubles = {0.10259, 0.641, 0.0086};
+        double[] doubles = {-0.5, 0, 2};
         mb.setViewParams(doubles);
 
         setStdDrawSettings(mb.getCenterX(),
@@ -33,8 +35,11 @@ public class TestDriver {
         for(int i = 0; i < mb.getGridSize(); i++) {
             for(int j = 0; j < mb.getGridSize(); j++) {
                 z = mb.calculateGridCoords(i, j);
-                if(mb.isInMandelbrot(z))
+                z.setIterationValue(mb.iterate(z));
+                if(mb.isInMandelbrot(z)) {
+                    StdDraw.setPenColor(new Color(z.getIterationValue()));
                     StdDraw.point(z.getRe(), z.getIm());
+                }
             }
         }
     }
@@ -43,7 +48,6 @@ public class TestDriver {
         StdDraw.setXscale(_x - sideLength, _x + sideLength);
         StdDraw.setYscale(_y - sideLength, _y + sideLength);
         StdDraw.setPenRadius(1.0/450);
-        StdDraw.setPenColor(StdDraw.RED);
     }
 }
 

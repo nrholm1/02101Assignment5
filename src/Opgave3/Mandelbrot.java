@@ -3,8 +3,8 @@ package Opgave3;
 import java.util.*;
 
 public class Mandelbrot {
-    final int MAX = 50;
-    final int gridSize = 512;
+    final int MAX = 255;
+    final int gridSize = 1000;
     Vector2 center = new Vector2(0,0);
     double sideLength = 0;
 
@@ -81,7 +81,7 @@ public class Mandelbrot {
     }
 
     public boolean isInMandelbrot(Complex z) {
-        return iterate(z) == MAX;
+        return z.getIterationValue() == MAX;
     }
 
     public int getGridSize() {
