@@ -21,25 +21,30 @@ public class TestDriver {
         double[] doubles = {-0.5, 0, 2};
         mb.setViewParams(doubles);
 
+        ColorPicker randomColorProfile = new ColorPicker();
         setStdDrawSettings(mb.getCenterX(),
                             mb.getCenterY(),
                             mb.getSideLength());
 
         StdDraw.show(1);
-        drawFractal();
+        drawFractal(randomColorProfile);
         StdDraw.show();
     }
 
-    static void drawFractal() {
+    static void drawFractal(ColorPicker colors) {
         Complex z = null;
         for(int i = 0; i < mb.getGridSize(); i++) {
             for(int j = 0; j < mb.getGridSize(); j++) {
                 z = mb.calculateGridCoords(i, j);
                 z.setIterationValue(mb.iterate(z));
-                if(mb.isInMandelbrot(z)) {
-                    StdDraw.setPenColor(new Color(z.getIterationValue()));
-                    StdDraw.point(z.getRe(), z.getIm());
+
+                if(!mb.isInMandelbrot(z)) {
+                    StdDraw.setPenColor(colors.map.get(z.getIterationValue()));
+                } else {
+                    StdDraw.setPenColor(Color.red);
                 }
+
+                StdDraw.point(z.getRe(), z.getIm());
             }
         }
     }
