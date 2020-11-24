@@ -38,7 +38,8 @@ public class Driver {
     }
 
     static void configure(String fileName) throws FileNotFoundException {
-        double[] doubles = {0.10684, -0.63675, 0.0085};
+//        double[] doubles = {0.10684, -0.63675, 0.0085};
+        double[] doubles = {-0.5, 0, 2};
         mb.setViewParams(doubles);
 
         int[][] colorGrid = ColorParser.parseFile(fileName);
