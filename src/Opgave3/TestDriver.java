@@ -40,8 +40,8 @@ public class TestDriver {
     }
 
     static void setStdDrawSettings(double _x, double _y, double sideLength) {
-        StdDraw.setXscale(_x - sideLength, _x + sideLength);
-        StdDraw.setYscale(_y - sideLength, _y + sideLength);
+        StdDraw.setXscale(_x - sideLength / 2, _x + sideLength / 2);
+        StdDraw.setYscale(_y - sideLength / 2, _y + sideLength / 2);
         StdDraw.setPenRadius(1.0/450);
     }
 }
