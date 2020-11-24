@@ -1,33 +1,27 @@
 package Opgave3;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 public class TestDriver {
     static Mandelbrot mb = new Mandelbrot();
-    public static void main(String args[]) {
-        // Complex z1 = new Complex(2,2);
-        // Complex z2 = new Complex(5,4);
-
-        // System.out.println(z1);
-        // System.out.println(z2);
-
-        // Complex sum = z1.plus(z2);
-        // Complex product = z1.times(z2);
-
-        // System.out.println("sum = " + sum);
-        // System.out.println("product = " + product);
-
+    public static void main(String args[]) throws FileNotFoundException {
 //        double[] doubles = mb.promptDoubles("Enter 3 numbers: ");
-        double[] doubles = {-0.5, 0, 2};
+        double[] doubles = {0.10684, -0.63675, 0.0085};
         mb.setViewParams(doubles);
 
         ColorPicker randomColorProfile = new ColorPicker();
+
+        int[][] colorGrid = ColorParser.parseFile("blues");
+
+        ColorPicker colorProfile = new ColorPicker(colorGrid);
         setStdDrawSettings(mb.getCenterX(),
                             mb.getCenterY(),
                             mb.getSideLength());
 
         StdDraw.show(1);
-        drawFractal(randomColorProfile);
+//        drawFractal(randomColorProfile);
+        drawFractal(colorProfile);
         StdDraw.show();
     }
 
@@ -38,11 +32,7 @@ public class TestDriver {
                 z = mb.calculateGridCoords(i, j);
                 z.setIterationValue(mb.iterate(z));
 
-                if(!mb.isInMandelbrot(z)) {
-                    StdDraw.setPenColor(colors.map.get(z.getIterationValue()));
-                } else {
-                    StdDraw.setPenColor(Color.red);
-                }
+                StdDraw.setPenColor(colors.map.get(z.getIterationValue()));
 
                 StdDraw.point(z.getRe(), z.getIm());
             }
