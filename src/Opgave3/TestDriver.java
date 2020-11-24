@@ -47,5 +47,3 @@ public class TestDriver {
     }
 }
 
-// x0 - sideLength/2 + (sideLength * row)/(gridSize - 1)
-// y0 - sideLength/2 + (sideLength * col)/(gridSize - 1) i
