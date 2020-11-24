@@ -4,6 +4,28 @@ import java.util.*;
 
 public class Mandelbrot {
     static final int MAX = 20;
+    static Vector2 center;
+    static double sideLength;
+
+    public static double getCenterX() {
+        return center.getX();
+    }
+    public static double getCenterY() {
+        return center.getY();
+    }
+    public static double getSideLength() {
+        return sideLength;
+    }
+
+    public static void setCenterX(double _x) {
+        center.setX(_x);
+    }
+    public static void setCenterY(double _y) {
+        center.setY(_y);
+    }
+    public static void setSideLength(double _sideLength) {
+        sideLength = _sideLength;
+    }
 
 
     public static int iterate(Complex z0) {
@@ -39,11 +61,13 @@ public class Mandelbrot {
 
         // return first 3 numbers entered.
         return new double[] { doubles.get(0),
-                doubles.get(1),
-                doubles.get(2) };
+                                doubles.get(1),
+                                doubles.get(2) };
     }
 
-    public static void printGrid() {
-
+    public static void setViewParams(double[] doubles) {
+        setCenterX(doubles[0]);
+        setCenterY(doubles[1]);
+        setSideLength(doubles[2]);
     }
 }
