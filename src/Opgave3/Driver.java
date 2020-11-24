@@ -1,6 +1,8 @@
 package Opgave3;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 
 public class Driver {
     static Mandelbrot mb = new Mandelbrot();
@@ -42,7 +44,7 @@ public class Driver {
         double[] doubles = {-0.5, 0, 2};
         mb.setViewParams(doubles);
 
-        int[][] colorGrid = ColorParser.parseFile(fileName);
+        HashMap<Integer, Color> colorGrid = ColorParser.parseFile(fileName);
         colorProfile = new ColorPicker(colorGrid);
 
         setStdDrawSettings(mb.getCenterX(),

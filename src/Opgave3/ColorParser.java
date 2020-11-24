@@ -1,12 +1,13 @@
 package Opgave3;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.InputMismatchException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class ColorParser {
-    public static int[][] parseFile(String fileName) throws FileNotFoundException, InputMismatchException {
+    public static HashMap<Integer, Color> parseFile(String fileName) throws FileNotFoundException {
         File file = new File("src/opgave3/mnd/" + fileName + ".mnd");
 
         Scanner in = null;
@@ -16,22 +17,26 @@ public class ColorParser {
         else
             throw new FileNotFoundException("File does not exist -> " + file.getAbsolutePath());
 
-        int[][] grid = new int[256][3];
+        HashMap<Integer, Color> map = new HashMap<Integer, Color>();
 
-        int col = 0;
+        int row = 0;
         while(in.hasNextLine())
         {
-            int row = 0;
+            int val = 0;
+            int[] rgb = new int[3];
+
             Scanner lineScan = new Scanner(in.nextLine());
             while(lineScan.hasNext()) {
                 int value = lineScan.nextInt();
-                grid[col][row] = value;
-                row++;
+                rgb[val] = value;
+                val++;
             }
-            col++;
+
+            map.put(row, new Color(rgb[0], rgb[1], rgb[2]));
+            row++;
         }
 
         System.out.println("Loaded " + fileName);
-        return grid;
+        return map;
     }
 }
