@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Mandelbrot {
     static final int MAX = 20;
-    static Vector2 center;
-    static double sideLength;
+    static Vector2 center = new Vector2(0,0);
+    static double sideLength = 0;
 
     public static double getCenterX() {
         return center.getX();

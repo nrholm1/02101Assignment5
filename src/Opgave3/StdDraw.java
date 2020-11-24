@@ -1,4 +1,4 @@
-package Aflevering4.Opgave3; /*************************************************************************
+package Opgave3; /*************************************************************************
  *  Compilation:  javac StdDraw.java
  *  Execution:    java StdDraw
  *
