@@ -3,32 +3,33 @@ package Opgave3;
 import java.util.*;
 
 public class Mandelbrot {
-    static final int MAX = 20;
-    static Vector2 center = new Vector2(0,0);
-    static double sideLength = 0;
+    final int MAX = 20;
+    final int gridSize = 5;
+    Vector2 center = new Vector2(0,0);
+    double sideLength = 0;
 
-    public static double getCenterX() {
+    public double getCenterX() {
         return center.getX();
     }
-    public static double getCenterY() {
+    public double getCenterY() {
         return center.getY();
     }
-    public static double getSideLength() {
+    public double getSideLength() {
         return sideLength;
     }
 
-    public static void setCenterX(double _x) {
+    public void setCenterX(double _x) {
         center.setX(_x);
     }
-    public static void setCenterY(double _y) {
+    public void setCenterY(double _y) {
         center.setY(_y);
     }
-    public static void setSideLength(double _sideLength) {
+    public void setSideLength(double _sideLength) {
         sideLength = _sideLength;
     }
 
 
-    public static int iterate(Complex z0) {
+    public int iterate(Complex z0) {
         Complex z = new Complex(z0);
 
         for(int i = 0; i < MAX; i++) {
@@ -41,7 +42,7 @@ public class Mandelbrot {
     }
 
 
-    public static double[] promptDoubles(String msg) {
+    public double[] promptDoubles(String msg) {
         System.out.println(msg);
         Scanner in = new Scanner(System.in);
 
@@ -65,9 +66,28 @@ public class Mandelbrot {
                                 doubles.get(2) };
     }
 
-    public static void setViewParams(double[] doubles) {
+    public void setViewParams(double[] doubles) {
         setCenterX(doubles[0]);
         setCenterY(doubles[1]);
         setSideLength(doubles[2]);
     }
+
+    public Complex calculateGridCoords(int row, int col) {
+        double _re = getCenterX() - getSideLength()/2
+                + (getSideLength() * row)/(gridSize - 1);
+        double _im = getCenterY() - getSideLength()/2
+                + (getSideLength() * col)/(gridSize - 1);
+        return new Complex(_re, _im);
+    }
+
+    public boolean isInMandelbrot(Complex z) {
+        return iterate(z) == MAX;
+    }
+
+    public int getGridSize() {
+        return gridSize;
+    }
 }
+
+// x0 - sideLength/2 + (sideLength * row)/(gridSize - 1)
+// y0 - sideLength/2 + (sideLength * col)/(gridSize - 1) i

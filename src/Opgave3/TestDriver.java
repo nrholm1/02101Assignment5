@@ -1,6 +1,7 @@
 package Opgave3;
 
 public class TestDriver {
+    static Mandelbrot mb = new Mandelbrot();
     public static void main(String args[]) {
         // Complex z1 = new Complex(2,2);
         // Complex z2 = new Complex(5,4);
@@ -14,32 +15,39 @@ public class TestDriver {
         // System.out.println("sum = " + sum);
         // System.out.println("product = " + product);
 
-//        double[] doubles = Mandelbrot.promptDoubles("Enter 3 numbers: ");
+//        double[] doubles = mb.promptDoubles("Enter 3 numbers: ");
         double[] doubles = {-0.5, 0, 2};
-        Mandelbrot.setViewParams(doubles);
+        mb.setViewParams(doubles);
 
-        setStdDrawSettings(Mandelbrot.getCenterX(),
-                            Mandelbrot.getCenterY(),
-                            Mandelbrot.getSideLength());
-        StdDraw.point(Mandelbrot.getCenterX(),
-                      Mandelbrot.getCenterY());
+        setStdDrawSettings(mb.getCenterX(),
+                            mb.getCenterY(),
+                            mb.getSideLength());
+        StdDraw.point(mb.getCenterX(),
+                      mb.getCenterY());
 
-        StdDraw.point(Mandelbrot.getCenterX() + Mandelbrot.getSideLength(),
-                      Mandelbrot.getCenterY() + Mandelbrot.getSideLength());
-        StdDraw.point(Mandelbrot.getCenterX() + Mandelbrot.getSideLength(),
-                      Mandelbrot.getCenterY() - Mandelbrot.getSideLength());
-        StdDraw.point(Mandelbrot.getCenterX() - Mandelbrot.getSideLength(),
-                      Mandelbrot.getCenterY() + Mandelbrot.getSideLength());
-        StdDraw.point(Mandelbrot.getCenterX() - Mandelbrot.getSideLength(),
-                      Mandelbrot.getCenterY() - Mandelbrot.getSideLength());
+        StdDraw.show();
+        drawFractal();
+        StdDraw.show();
+    }
 
-        for(var d : doubles)
-            System.out.print(d + " ");
+    static void drawFractal() {
+        Complex z = null;
+        for(int i = 0; i < mb.getGridSize(); i++) {
+            for(int j = 0; j < mb.getGridSize(); j++) {
+                z = mb.calculateGridCoords(i,j);
+                if(mb.isInMandelbrot(z))
+                    StdDraw.point(z.getRe(), z.getIm());
+            }
+        }
     }
 
     static void setStdDrawSettings(double _x, double _y, double sideLength) {
         StdDraw.setXscale(_x - sideLength, _x + sideLength);
         StdDraw.setYscale(_y - sideLength, _y + sideLength);
-        StdDraw.setPenRadius(100.0/5000);
+        StdDraw.setPenRadius(1.0/10);
+        StdDraw.setPenColor(StdDraw.RED);
     }
 }
+
+// x0 - sideLength/2 + (sideLength * row)/(gridSize - 1)
+// y0 - sideLength/2 + (sideLength * col)/(gridSize - 1) i
