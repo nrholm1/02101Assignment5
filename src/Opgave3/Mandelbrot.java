@@ -3,8 +3,8 @@ package Opgave3;
 import java.util.*;
 
 public class Mandelbrot {
-    final int MAX = 20;
-    final int gridSize = 5;
+    final int MAX = 50;
+    final int gridSize = 512;
     Vector2 center = new Vector2(0,0);
     double sideLength = 0;
 

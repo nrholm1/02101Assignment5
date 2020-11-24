@@ -16,16 +16,14 @@ public class TestDriver {
         // System.out.println("product = " + product);
 
 //        double[] doubles = mb.promptDoubles("Enter 3 numbers: ");
-        double[] doubles = {-0.5, 0, 2};
+        double[] doubles = {0.10259, 0.641, 0.0086};
         mb.setViewParams(doubles);
 
         setStdDrawSettings(mb.getCenterX(),
                             mb.getCenterY(),
                             mb.getSideLength());
-        StdDraw.point(mb.getCenterX(),
-                      mb.getCenterY());
 
-        StdDraw.show();
+        StdDraw.show(1);
         drawFractal();
         StdDraw.show();
     }
@@ -34,7 +32,7 @@ public class TestDriver {
         Complex z = null;
         for(int i = 0; i < mb.getGridSize(); i++) {
             for(int j = 0; j < mb.getGridSize(); j++) {
-                z = mb.calculateGridCoords(i,j);
+                z = mb.calculateGridCoords(i, j);
                 if(mb.isInMandelbrot(z))
                     StdDraw.point(z.getRe(), z.getIm());
             }
@@ -44,7 +42,7 @@ public class TestDriver {
     static void setStdDrawSettings(double _x, double _y, double sideLength) {
         StdDraw.setXscale(_x - sideLength, _x + sideLength);
         StdDraw.setYscale(_y - sideLength, _y + sideLength);
-        StdDraw.setPenRadius(1.0/10);
+        StdDraw.setPenRadius(1.0/450);
         StdDraw.setPenColor(StdDraw.RED);
     }
 }
