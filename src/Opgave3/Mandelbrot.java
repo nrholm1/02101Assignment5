@@ -5,6 +5,7 @@ import java.util.*;
 public class Mandelbrot {
     static final int MAX = 20;
 
+
     public static int iterate(Complex z0) {
         Complex z = new Complex(z0);
 
@@ -24,7 +25,7 @@ public class Mandelbrot {
 
         ArrayList<Double> doubles = new ArrayList<Double>();
 
-        double num = Integer.MIN_VALUE;
+        double num;
         while (doubles.size() < 3) {
             if (in.hasNextDouble()) {
                 num = in.nextDouble();
