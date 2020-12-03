@@ -5,3 +5,5 @@ public class Boss extends Person {
 		return super.toString();
 	}
 }
+
+// s204503
