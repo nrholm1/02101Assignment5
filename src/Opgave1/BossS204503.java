@@ -1,6 +1,6 @@
 package Opgave1;
 
-public class Boss extends Person {
+public class BossS204503 extends PersonS204503 {
 	public String toString() {
 		return super.toString();
 	}
