@@ -4,7 +4,7 @@ public class JavaProgrammer extends Programmer {
 	String code;
 
 	public String toString() {
-		return this.code;
+		return super.toString() + " | Code: " + this.code;
 	}
 
 	public JavaProgrammer(String _code) {

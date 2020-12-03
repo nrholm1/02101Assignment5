@@ -2,6 +2,6 @@ package Opgave1;
 
 public class Boss extends Person {
 	public String toString() {
-		return "Boss";
+		return super.toString();
 	}
 }

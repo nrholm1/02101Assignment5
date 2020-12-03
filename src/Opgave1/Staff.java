@@ -8,15 +8,10 @@ public class Staff {
 		JavaProgrammer dean = new JavaProgrammer("Dean");
 		JavaProgrammer eric = new JavaProgrammer("Eric");
 
-		printInfo(adam, "adam");
-		printInfo(bill, "bill");
-		printInfo(carl, "carl");
-		printInfo(dean, "");
-		printInfo(eric, "");
-	}
-
-	static void printInfo(Person p, String varName) {
-		var name = varName == "" ? p : varName;
-		System.out.println(p.getClass().getName() + " " + name);
+		System.out.println("adam " + adam);
+		System.out.println("bill " + bill);
+		System.out.println("carl " + carl);
+		System.out.println("dean " + dean);
+		System.out.println("eric " + eric);
 	}
 }
